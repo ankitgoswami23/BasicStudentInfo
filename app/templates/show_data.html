@@ -1,0 +1,36 @@
+{% extends 'basic.html' %}
+
+{% block title %}{{ head }}{% endblock %}
+
+
+{% block head %}Student Data{% endblock %}
+
+{% block body %}
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr align="center">
+        {% for hed in headers %}
+        <th scope="col">{{ hed }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for data in student %}
+    <tr align="center">
+        <td>{{ data.first_name }}</td>
+        <td>{{ data.last_name }}</td>
+        <td>{{ data.standard }}</td>
+        <td>{{ data.ph_no }}</td>
+        <td>{{ data.address }}</td>
+        <td><a href="edit-student/{{ data.id }}">Edit Data</a></td>
+        <td><a href="delete-student/{{ data.id }}">Delete Student</a></td>
+    </tr>
+    {% endfor %}
+
+
+    </tbody>
+</table>
+
+{% endblock %}

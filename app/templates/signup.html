@@ -1,0 +1,101 @@
+{% extends 'product/basic.html' %}
+
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+
+{% if alert == 'success' %}
+<div class="alert text-center alert-{{ alert }}" role="alert">
+	{{ head }}
+</div>
+{% elif alert == 'danger' %}
+<div class="alert text-center alert-{{ alert }}" role="alert">
+	{{ head }}
+</div>
+{% endif %}
+
+
+<form onsubmit="return checkPassword(this)" method="POST" action="/product/signup/">
+	{% csrf_token %}
+	<div style="padding-left: 60px; width: 830px" class="container">
+		<div class="form-row">
+			<h1>Create an account to Product.com</h1>
+			<div class="form-group col-md-6">
+				<label for="inputEmail4">First Name</label>
+				<input name="fname" type="text" class="form-control" id="inputEmail4" placeholder="First Name" required>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="inputPassword4">Last Name</label>
+				<input name="lname" type="text" class="form-control" id="inputPassword4" placeholder="Last Name" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputAddress">Email ID</label>
+			<input name="email" type="email" class="form-control" id="inputAddress" placeholder="Enter Your email id" required>
+		</div>
+		<div class="form-group">
+			<label for="inputAddress">Password</label>
+			<input name="password1" type="password" class="form-control" id="password1" placeholder="Enter Your password" required>
+		</div>
+		<div class="form-group">
+			<label for="inputAddress">Confirm Password</label>
+			<input name="password" type="password" class="form-control" id="password" placeholder="Confirm password" required>
+		</div>
+		<div class="form-group">
+			<label for="inputAddress2">Contact Number</label>
+			<input type="text" name="contact" class="form-control" id="inputAddress2" placeholder="Contact Number" required>
+		</div>
+		<div>
+			<div class="form-group">
+				<label for="inputCity">City</label>
+				<input name="city" type="text" class="form-control" id="inputCity" placeholder="City" required>
+			</div>
+
+			<div class="form-group">
+				<label for="checkbox">Gender : </label>
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" required>
+				  <label class="form-check-label" for="inlineRadio1"> Male</label>
+				</div>
+				<div class="form-check form-check-inline">
+				  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female" required>
+				  <label class="form-check-label" for="inlineRadio2"> Female</label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Sign up</button>
+		</div>
+	</form>
+
+
+
+        <script> 
+          
+            // Function to check Whether both passwords 
+            // is same or not. 
+            function checkPassword(form) { 
+                password1 = form.password.value; 
+                password2 = form.password1.value; 
+  
+                // If password not entered 
+                if (password1 == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (password2 == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    return true; 
+                } 
+            } 
+        </script>
+
+	{% endblock %}

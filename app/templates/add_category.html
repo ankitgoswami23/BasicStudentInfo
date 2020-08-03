@@ -1,0 +1,22 @@
+{% extends 'product/basic.html' %}
+
+{% block title %}Add Category{% endblock %}
+
+{% block head %}Add Product{% endblock %}
+
+{% block body %}
+
+<form name="add_category_form" action="/product/add_category/" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="exampleFormControlInput1">Category Name : </label>
+		<input name="name" class="form-control" id="exampleFormControlInput1">
+	</div>
+	<div class="form-group">
+		<label for="exampleFormControlTextarea1">Description</label>
+		<textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+	</div>
+	<input style="justify-content: center;" class="btn btn-primary" type="submit" value="Submit">
+</form>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'basic.html' %}
+
+{% block title %} {{ title }}{% endblock %}
+
+{% block body %}
+
+{% if alert == 'success' %}
+<div class="alert text-center alert-{{ alert }}" role="alert">
+	{{ head }}
+</div>
+{% elif alert == 'danger' %}
+<div class="alert text-center alert-{{ alert }}" role="alert">
+	{{ head }}
+</div>
+{% endif %}
+
+
+<div class="container">
+	<a style="color: white;font-weight: bold;" href="/add-student">
+		<button type="button" class="btn btn-secondary btn-lg btn-block">
+			<b> Add Student </b>
+		</button>
+	</a><br>
+
+	<a style="color: white;font-weight: bold;" href="/show-student">
+		<button type="button" class="btn btn-secondary btn-lg btn-block">
+			<b>Show Student</b>
+		</button>
+	</a><br>
+
+</div>
+
+{% endblock %}

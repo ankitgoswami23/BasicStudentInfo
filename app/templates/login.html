@@ -1,0 +1,41 @@
+{% extends 'product/basic.html' %}
+
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+
+{% if alert == 'success' %}
+<div class="alert text-center alert-{{ alert }}" role="alert">
+	{{ head }}
+</div>
+{% elif alert == 'danger' %}
+<div class="alert text-center alert-{{ alert }}" role="alert">
+	{{ head }}
+</div>
+{% endif %}
+
+
+<form method="POST" action="/product/login/" style="width: 350px">
+	 {% csrf_token %}
+	<div style="padding-left: 350px; width: 830px" class="container">
+	  <h2>Sign in to Product.com</h2>
+	  <div class="form-group">
+		<label for="exampleInputEmail1">Email address</label>
+		<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+		<small id="emailHelp" class="form-text text-muted "><font color="red"><b>{{ email }}</b></font></small>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword1">Password</label>
+		<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+	</div>
+	<button type="submit" class="btn btn-primary">Log in</button>
+	<a href="/product/signup">
+	  <button type="button" class="btn btn-secondary mx-2" id="login" >
+		Signup
+	</button>
+</a>
+</div>
+</form>
+
+{% endblock %}
